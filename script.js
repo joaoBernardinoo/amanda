@@ -1,11 +1,12 @@
 // --- CONFIGURAÇÃO ---
 // Coloque as suas imagens na ordem que desejar
 const images = [
-    'images/img.jpeg',
+    'images/img.webp',
+    'images/img2.webp',
 ];
 
 // Defina a data de início do relacionamento (Ano, Mês-1, Dia, Hora, Minuto, Segundo)
-const startDate = new Date(2022, 11, 15, 20, 0, 0); // Ex: 15 de Dezembro de 2022, 20:00
+const startDate = new Date(2024, 10, 5, 22, 0, 0); // Ex: 15 de Dezembro de 2022, 20:00
 
 // --- LÓGICA DO CARROSSEL ---
 let currentImageIndex = 0;
@@ -24,7 +25,7 @@ function changeImage(direction) {
 // Opcional: Trocar imagem a cada 5 segundos
 setInterval(() => {
     changeImage(1);
-}, 5000);
+}, 2000);
 
 // --- LÓGICA DO CONTADOR ---
 const countdownElement = document.getElementById('countdown');
@@ -44,27 +45,10 @@ function updateCountdown() {
     const seconds = Math.floor((diff / 1000) % 60);
 
     countdownElement.textContent = 
-        `${years} years, ${months} months, ${remainingDays} days, ${hours} hours and ${seconds} seconds`;
+        `${years} anos, ${months} meses, ${remainingDays} dias, ${hours} horas e ${seconds} segundos`;
 }
 
 // Atualiza o contador a cada segundo
 setInterval(updateCountdown, 1000);
 updateCountdown(); // Chama uma vez para não esperar 1 segundo para aparecer
 
-
-// --- LÓGICA DO PLAYER DE MÚSICA ---
-const music = document.getElementById('background-music');
-const playPauseBtn = document.getElementById('play-pause-btn');
-let isPlaying = false;
-
-playPauseBtn.addEventListener('click', () => {
-    // A música só pode começar com interação do usuário
-    if (isPlaying) {
-        music.pause();
-        playPauseBtn.textContent = '▶';
-    } else {
-        music.play();
-        playPauseBtn.textContent = '❚❚';
-    }
-    isPlaying = !isPlaying;
-});
