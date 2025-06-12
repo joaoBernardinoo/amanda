@@ -42,6 +42,33 @@ const images = [
   "https://lh3.googleusercontent.com/pw/AP1GczPefcVG6bVUpLR2IRLT844_ctnup21eomcltUxjicMN2D3uN5KThwBFsytAk-CB6cDBMug1V5aCq2IfCeOQRS5vRd1oq2Y7P5LWljHK-S4h_IsyLrRdt6WsVzAcTAXtgPs3IvZZVRLSEuDuWgizfT_s=w685-h913-s-no?authuser=1",
 ];
 
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+
+    // Define uma posição horizontal aleatória para o coração aparecer
+    heart.style.left = Math.random() * 100 + 'vw';
+    
+    // Define uma duração de animação aleatória para que voem em velocidades diferentes
+    heart.style.animationDuration = Math.random() * 3 + 5 + 's'; // Duração entre 5s e 8s
+
+    // Define um tamanho aleatório
+    const size = Math.random() * 15 + 10 + 'px'; // Tamanho entre 10px e 25px
+    heart.style.width = size;
+    heart.style.height = size;
+    heart.style.setProperty('--heart-size', size); // Para os pseudo-elementos usarem
+
+    document.body.appendChild(heart);
+
+    // Remove o coração da página depois que a animação terminar
+    // para não sobrecarregar o navegador
+    setTimeout(() => {
+        heart.remove();
+    }, 8000); // 8000ms = 8s (tempo máximo da animação)
+}
+setInterval(createHeart, 300);
+
+
 // Defina a data de início do relacionamento (Ano, Mês-1, Dia, Hora, Minuto, Segundo)
 const startDate = new Date(2024, 10, 5, 22, 0, 0); // Ex: 15 de Dezembro de 2022, 20:00
 
@@ -94,3 +121,33 @@ function updateCountdown() {
 // Atualiza o contador a cada segundo
 setInterval(updateCountdown, 1000);
 updateCountdown(); // Chama uma vez para não esperar 1 segundo para aparecer
+
+let isPaused = false;
+
+// Atualize o setInterval para respeitar o pause
+setInterval(() => {
+  if (!isPaused) {
+    changeImage(1);
+  }
+}, 5000);
+
+carouselImage.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+// Eventos para pausar e retomar ao segurar/soltar o mouse ou dedo
+carouselImage.addEventListener('mousedown', () => {
+  isPaused = true;
+});
+carouselImage.addEventListener('mouseup', () => {
+  isPaused = false;
+});
+carouselImage.addEventListener('mouseleave', () => {
+  isPaused = false;
+});
+// Para dispositivos móveis (toque)
+carouselImage.addEventListener('touchstart', () => {
+  isPaused = true;
+});
+carouselImage.addEventListener('touchend', () => {
+  isPaused = false;
+});

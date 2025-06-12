@@ -1,6 +1,5 @@
 body {
-    background-color: #121212;
-    background-image: radial-gradient(circle at center, #282c34, #121212);
+    /* Suas configurações originais */
     color: #e0e0e0;
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -8,6 +7,103 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    
+    /* Necessário para a camada de partículas */
+    position: relative; 
+    /* Padrão 1: O gradiente animado como fundo principal */
+    background: linear-gradient(-45deg, #4c0033, #a31f34, #282c34, #ff69b4);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* Padrão 2: A camada de partículas que fica SOBRE o gradiente */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 25%, rgba(255, 105, 180, 0.3), transparent 25%),
+        radial-gradient(circle at 80% 15%, rgba(255, 182, 193, 0.25), transparent 20%),
+        radial-gradient(circle at 50% 70%, rgba(220, 20, 60, 0.3), transparent 30%),
+        radial-gradient(circle at 15% 90%, rgba(255, 255, 255, 0.1), transparent 15%);
+    animation: moveParticles 25s linear infinite;
+    pointer-events: none; /* <-- ADICIONE ESTA LINHA */
+}
+
+/* Animação para o Gradiente (do Padrão 1) */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animação para as Partículas (do Padrão 2) */
+@keyframes moveParticles {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-10px, -20px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* --- Efeito de Corações Voadores --- */
+
+/* O coração é criado com um elemento e seus dois pseudo-elementos */
+.heart {
+    position: absolute;
+    bottom: -5vh; /* Começa fora da tela, na parte de baixo */
+    background-color: #ff4757; /* Cor do coração */
+    height: 20px;
+    width: 20px;
+    transform: rotate(-45deg);
+    animation: fly 7s linear infinite; /* Animação 'fly' com 7s de duração */
+    pointer-events: none; /* <-- ADICIONE ESTA LINHA */
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    background-color: #ff4757;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+/* Animação que faz o coração voar */
+@keyframes fly {
+    0% {
+        transform: translateY(0) rotate(-45deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        /* Move o coração para 100vh (100% da altura da tela) acima de onde começou */
+        transform: translateY(-110vh) rotate(-45deg) scale(0.2); 
+        opacity: 0;
+    }
 }
 
 .container {
@@ -67,7 +163,7 @@ body {
 
 /* --- Conteúdo de Texto --- */
 .title {
-    font-family: 'Lora', serif;
+    font-family: 'Great Vibes', cursive, 'Poppins', sans-serif; /* Fonte romântica para o título */
     font-weight: 700;
     font-size: 24px;
     color: white;
@@ -83,7 +179,8 @@ body {
 }
 
 .message {
-    font-size: 16px;
+    font-size: 28px;
     color: #b3b3b3;
     line-height: 1.6;
+    font-family: 'Dancing Script', cursive, 'Poppins', sans-serif; /* Fonte romântica */
 }
