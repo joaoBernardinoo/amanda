@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Tempo Juntos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+    <main class="container">
+        <div class="music-player">
+            <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" alt="Spotify Logo" class="spotify-logo">
+            <div class="song-info">
+                <p class="song-title">Die with a smile</p>
+                <p class="song-artist">Lady Gaga & Bruno Mars</p>
+            </div>
+            <audio id="background-music" src="audio/nossa-musica.mp3" loop></audio>
+            <button id="play-pause-btn" class="play-pause">▶</button>
+        </div>
+
+        <div class="main-card">
+            <div class="carousel-container">
+                <img src="images/casal1.jpg" id="carousel-image" alt="Foto do casal">
+                <button class="carousel-btn prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+        </div>
+        
+        <div class="text-content">
+            <h1 class="title">I have loved you for</h1>
+            <div id="countdown" class="countdown-box">
+                Calculando...
+            </div>
+            <p class="message">
+                Each passing day, my heart fills with even more affection and admiration for you.
+            </p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

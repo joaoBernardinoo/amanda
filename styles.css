@@ -1,0 +1,121 @@
+body {
+    background-color: #121212;
+    background-image: radial-gradient(circle at center, #282c34, #121212);
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    max-width: 375px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- Music Player --- */
+.music-player {
+    background-color: rgba(20, 20, 20, 0.8);
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.spotify-logo {
+    width: 24px;
+    height: 24px;
+}
+.song-info {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 12px;
+}
+.song-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+.song-artist {
+    font-size: 12px;
+    color: #b3b3b3;
+    margin: 0;
+}
+.play-pause {
+    background: none;
+    border: 1px solid #b3b3b3;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* --- Card e Carrossel --- */
+.main-card {
+    background-color: #282828;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 24px;
+}
+
+.carousel-container {
+    position: relative;
+}
+
+#carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+
+/* --- Conteúdo de Texto --- */
+.title {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+}
+
+.countdown-box {
+    background-color: #282828;
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin: 10px 0 20px;
+    display: inline-block;
+}
+
+.message {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
